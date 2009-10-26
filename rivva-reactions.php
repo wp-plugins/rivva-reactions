@@ -3,10 +3,10 @@
 Plugin Name: Rivva Reactions
 Plugin URI:  http://bueltge.de/rivva-reaction-wordpress-plugin/1029/
 Description: Displays Rivva reactions on your WordPress 2.7+ dashboard.
-Version:     0.1
+Version:     0.2
 Author:      Frank B&uuml;ltge
 Author URI:  http://bueltge.de/
-Last Change: 26.10.2009 13:12:24
+Last Change: 26.10.2009 15:00:40
 /*
 
 /*
@@ -58,6 +58,11 @@ if ( !class_exists('RivvaReactions') ) {
 		function RivvaReactions() {
 			add_action( 'init', array(&$this, 'textdomain') );
 			add_action( 'init', array(&$this, 'on_init'), 1 );
+			
+			if ( function_exists('register_deactivation_hook') )
+				register_deactivation_hook( __FILE__, array(&$this, 'on_deactivate') );
+			if ( function_exists('register_uninstall_hook') )
+				register_uninstall_hook( __FILE__, array(&$this, 'on_deactivate') );
 		}
 		
 		
@@ -86,6 +91,14 @@ if ( !class_exists('RivvaReactions') ) {
 			wp_enqueue_script( 'rivva-reactions', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/js/rivva-reactions.js', array('jquery') );
 			wp_enqueue_style( 'do-jquery-ui-tabs-css', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/css/ui-tabs.css' );
 			wp_enqueue_style( 'rivva-reactions-css', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/css/style.css' );
+		}
+		
+		
+		/**
+		 * delete options in database
+		 */
+		function on_deactivate() {
+			delete_option( 'RivvaReactions' );
 		}
 		
 		
