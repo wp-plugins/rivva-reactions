@@ -32,8 +32,8 @@ Please see the [official site on Rivva](http://rivva.de/about "About Rivva").
 1. Unpack the download-package
 1. Upload the file to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. See the informations on the frontend of your blog
-1. Ready
+1. See the informations on the widget Rivva Reactions on Dashboard
+1. Optional: configure the plugin on the widget-link
 
 
 == Screenshots ==
