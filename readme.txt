@@ -1,0 +1,64 @@
+=== Rivva Reactions ===
+Contributors: Bueltge
+Donate link: http://bueltge.de/wunschliste/
+Tags: dashbaord widget, rivva, incoming links, widgets, dashboard, rss, atom
+Requires at least: 2.7
+Tested up to: 2.9-rare
+Stable tag: 0.1
+
+Displays Rivva reactions - also blogs, tweets, top stories and news about WordPress - for your blog on your WordPress 2.7+ dashboard.
+
+== Description ==
+
+WordPress 2.7 introduces a widgetized dashboard featuring the latest posts and WordPress news.
+
+This plugin creates a new widget for that dashboard that lists out the latest [Rivva](http://rivva.de/ "Rivva") reactions and news.
+
+This widget allows you to display in your dashboard articles on other blogs or on Twitter that have cited you. It is automatic, so you need only install it and that's it. You can also see Top Stories and Top WordPress Stories of Rivva.
+
+= About Rivva =
+
+Please see the [official site on Rivva](http://rivva.de/about "About Rivva").
+
+
+== Installation ==
+
+= Requirements =
+
+* WordPress version 2.7 and later (tested at 2.9-rare)
+
+= Installation =
+
+1. Unpack the download-package
+1. Upload the file to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. See the informations on the frontend of your blog
+1. Ready
+
+
+== Screenshots ==
+
+1. Widget Screenshot (WordPress 2.9-rare)
+
+
+== Other Notes ==
+
+= Licence =
+
+Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
+
+= Translations =
+
+The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the .pot file which contains all defintions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Windows).
+
+
+== Changelog ==
+
+= v0.1 (26/10/2009) =
+* Write a Plugin based on my ideas and my many help in the community
+
+
+== Frequently Asked Questions ==
+
+= I love this plugin! How can I show the developer how much I appreciate his work? =
+Please visit [my website](http://bueltge.de/ "bueltge.de") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author or use the donate form.
