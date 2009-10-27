@@ -23,9 +23,9 @@ Rivva is very interesting for german blogs, Twitter-user and all readers, she lo
 Please see the [official site on Rivva](http://rivva.de/about "About Rivva").
 
 = Was ist Rivva? =
-Rivva versucht einen gewichteten Schlagzeilenüberblick über die deutschsprachige Blog- und Online-Medienlandschaft zu liefern.`
+Rivva versucht einen gewichteten Schlagzeilen&uuml;berblick &uuml;ber die deutschsprachige Blog- und Online-Medienlandschaft zu liefern.`
 
-Nach US-Vorbild [Techmeme](http://www.techmeme.com/) steckt dahinter eine vollautomatische Suchmaschine, die interessante Themen verfolgt, verwandte Diskussionen gruppiert und rund um die Uhr zu einer Top-News-Seite aggregiert. Die Idee dahinter ist vergleichbar mit [Google News](http://news.google.de/) – nur, dass Blogger entscheiden, welche Artikel auf der Titelseite landen und welche nicht.
+Nach US-Vorbild [Techmeme](http://www.techmeme.com/) steckt dahinter eine vollautomatische Suchmaschine, die interessante Themen verfolgt, verwandte Diskussionen gruppiert und rund um die Uhr zu einer Top-News-Seite aggregiert. Die Idee dahinter ist vergleichbar mit [Google News](http://news.google.de/) - nur, dass Blogger entscheiden, welche Artikel auf der Titelseite landen und welche nicht.
 
 Please see the [official site on Rivva](http://rivva.de/about "About Rivva").
 
