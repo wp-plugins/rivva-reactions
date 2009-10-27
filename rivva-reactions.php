@@ -3,10 +3,10 @@
 Plugin Name: Rivva Reactions
 Plugin URI:  http://bueltge.de/rivva-reaction-wordpress-plugin/1029/
 Description: Displays Rivva reactions on your WordPress 2.7+ dashboard.
-Version:     0.2
+Version:     0.3
 Author:      Frank B&uuml;ltge
 Author URI:  http://bueltge.de/
-Last Change: 26.10.2009 15:00:40
+Last Change: 27.10.2009 09:01:25
 /*
 
 /*
@@ -325,12 +325,12 @@ if ( !class_exists('RivvaReactions') ) {
 		
 			$options = $this->RivvaReactionsOptions();
 		
-			if ( 'post' == strtolower($_SERVER['REQUEST_METHOD']) && isset( $_POST['widget_id'] ) && 'RivvaReactionsDashboard' == $_POST['widget_id'] ) {
+			if ( 'post' == strtolower($_SERVER['REQUEST_METHOD']) && isset( $_POST['widget_id'] ) && 'wp_dashboard_rivva_reactions' == $_POST['widget_id'] ) {
 				foreach ( array( 'items', 'showtime', 'showurl', 'showexcerpt', 'ownreactions', 'twittername' ) as $key )
 					$options[$key] = esc_html( strip_tags( $_POST[$key] ) );
 				update_option( 'RivvaReactions', $options );
 			}
-				
+			
 		?>
 			<p>
 				<label for="items"><?php _e('How many Rivva reactions would you like to display?', FB_RR_TEXTDOMAIN ); ?>

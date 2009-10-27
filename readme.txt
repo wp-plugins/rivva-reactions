@@ -18,6 +18,15 @@ This widget allows you to display in your dashboard articles on other blogs or o
 
 = About Rivva =
 
+Rivva is very interesting for german blogs, Twitter-user and all readers, she love news and fast informationen. Rivva tries to supply a weighted headline overview over the German language blog and online medium landscape.
+
+Please see the [official site on Rivva](http://rivva.de/about "About Rivva").
+
+= Was ist Rivva? =
+Rivva versucht einen gewichteten Schlagzeilenüberblick über die deutschsprachige Blog- und Online-Medienlandschaft zu liefern.`
+
+Nach US-Vorbild [Techmeme](http://www.techmeme.com/) steckt dahinter eine vollautomatische Suchmaschine, die interessante Themen verfolgt, verwandte Diskussionen gruppiert und rund um die Uhr zu einer Top-News-Seite aggregiert. Die Idee dahinter ist vergleichbar mit [Google News](http://news.google.de/) – nur, dass Blogger entscheiden, welche Artikel auf der Titelseite landen und welche nicht.
+
 Please see the [official site on Rivva](http://rivva.de/about "About Rivva").
 
 
@@ -53,6 +62,12 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+
+= v0.3 (27/10/2009) =
+* Bugfix for save settings
+
+= v0.2 (26/10/2009) =
+* change de_DE language file
 
 = v0.1 (26/10/2009) =
 * Write a Plugin based on my ideas and my many help in the community
