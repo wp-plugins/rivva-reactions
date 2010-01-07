@@ -23,86 +23,86 @@ msgstr ""
 msgid "Error in file:  on line: .<br />The Wordpress file \"rss-functions.php\" or \"rss.php\" could not be included."
 msgstr ""
 
-#: rivva-reactions.php:180
-#: rivva-reactions.php:219
-#: rivva-reactions.php:259
+#: rivva-reactions.php:193
+#: rivva-reactions.php:232
+#: rivva-reactions.php:272
 #, php-format
 msgid "%s ago"
 msgstr ""
 
-#: rivva-reactions.php:199
-#: rivva-reactions.php:238
-#: rivva-reactions.php:278
+#: rivva-reactions.php:212
+#: rivva-reactions.php:251
+#: rivva-reactions.php:291
 #@ rivvareactions
 msgid "View all"
 msgstr "Alle ansehen"
 
-#: rivva-reactions.php:239
-#: rivva-reactions.php:279
+#: rivva-reactions.php:252
+#: rivva-reactions.php:292
 #@ rivvareactions
 msgid "Newsriver"
 msgstr "Newsriver"
 
-#: rivva-reactions.php:290
+#: rivva-reactions.php:303
 msgid "Rivva Reactions"
 msgstr ""
 
-#: rivva-reactions.php:323
+#: rivva-reactions.php:336
 #@ rivvareactions
 msgid "How many Rivva reactions would you like to display?"
 msgstr "Wie viele Rivva Reaktionen möchtest du sehen?"
 
-#: rivva-reactions.php:336
+#: rivva-reactions.php:349
 #@ rivvareactions
 msgid "Show reaction date?"
 msgstr "Das Datum der Reaktion zeigen?"
 
-#: rivva-reactions.php:343
+#: rivva-reactions.php:356
 #@ rivvareactions
 msgid "Show excerpt?"
 msgstr "Auszug anzeigen?"
 
-#: rivva-reactions.php:350
+#: rivva-reactions.php:363
 #@ rivvareactions
 msgid "Filter your own tweets?"
 msgstr "Die eigenen Tweets filtern?"
 
-#: rivva-reactions.php:357
+#: rivva-reactions.php:370
 #@ rivvareactions
 msgid "Your Twitter username"
 msgstr "Dein Twitter Username"
 
-#: rivva-reactions.php:275
+#: rivva-reactions.php:288
 #@ rivvareactions
 msgid "This dashboard widget queries <a href=\"http://rivva.de\">Rivva</a> for WordPress."
 msgstr "Das Dashboard Widget scannt <a href=\\\"http://rivva.de\\\">Rivva</a> nach WordPress."
 
-#: rivva-reactions.php:196
+#: rivva-reactions.php:209
 #@ rivvareactions
 msgid "This dashboard widget queries <a href=\"http://rivva.de\">Rivva</a> so that when another blog or Twitter links to your site it will show up here. It has found no incoming links... yet. It's okay - there is no rush."
 msgstr "Dieses Dashboard Widget scannt <a href=\\\"http://rivva.de\\\">Rivva</a>, so dass wenn ein Blog oder Twitter deine Site verlinkt, die Quelle hier gezeigt wird. Es wurden keine Links gefunden... bisher. Das ist okay - keine Sorge."
 
-#: rivva-reactions.php:235
+#: rivva-reactions.php:248
 #@ rivvareactions
 msgid "This dashboard widget queries <a href=\"http://rivva.de\">Rivva</a> News."
 msgstr "Dieses Dashboard Widget scannt die <a href=\\\"http://rivva.de\\\">Rivva</a> News."
 
-#: rivva-reactions.php:362
+#: rivva-reactions.php:375
 #@ rivvareactions
 msgid "About Rivva"
 msgstr "Über Rivva"
 
-#: rivva-reactions.php:148
+#: rivva-reactions.php:161
 #@ rivvareactions
 msgid "Reactions"
 msgstr "Reaktionen"
 
-#: rivva-reactions.php:149
+#: rivva-reactions.php:162
 #@ rivvareactions
 msgid "Top Stories"
 msgstr "Top Stories"
 
-#: rivva-reactions.php:150
+#: rivva-reactions.php:163
 #@ rivvareactions
 msgid "WP Stories"
 msgstr "WP Stories"
