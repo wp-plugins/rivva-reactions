@@ -3,10 +3,10 @@
 Plugin Name: Rivva Reactions
 Plugin URI:  http://bueltge.de/rivva-reaction-wordpress-plugin/1029/
 Description: Displays Rivva reactions on your WordPress 2.7+ dashboard.
-Version:     0.3
+Version:     0.4
 Author:      Frank B&uuml;ltge
 Author URI:  http://bueltge.de/
-Last Change: 27.10.2009 09:01:25
+Last Change: 18.06.2010 14:38:50
 /*
 
 /*
@@ -61,8 +61,6 @@ if ( !class_exists('RivvaReactions') ) {
 			
 			if ( function_exists('register_deactivation_hook') )
 				register_deactivation_hook( __FILE__, array(&$this, 'on_deactivate') );
-			if ( function_exists('register_uninstall_hook') )
-				register_uninstall_hook( __FILE__, array(&$this, 'on_deactivate') );
 		}
 		
 		
@@ -76,7 +74,7 @@ if ( !class_exists('RivvaReactions') ) {
 			
 			global $pagenow;
 			
-			if ( $pagenow == 'index.php' )
+			if ( 'index.php' == $pagenow )
 				add_action( 'admin_init', array(&$this, 'on_dashboard') );
 		}
 		
@@ -87,10 +85,11 @@ if ( !class_exists('RivvaReactions') ) {
 		function on_dashboard() {
 			add_action( 'wp_dashboard_setup', array(&$this, 'RivvaReactionsInit') );
 				
-			wp_enqueue_script( 'jquery-ui-tabs' );
-			wp_enqueue_script( 'rivva-reactions', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/js/rivva-reactions.js', array('jquery') );
-			wp_enqueue_style( 'do-jquery-ui-tabs-css', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/css/ui-tabs.css' );
-			wp_enqueue_style( 'rivva-reactions-css', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/css/style.css' );
+			wp_enqueue_script( 'rivva-reactions', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/js/rivva-reactions.js', array('jquery', 'jquery-ui-tabs') );
+			
+			wp_register_style( 'do-jquery-ui-tabs-css', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/css/ui-tabs.css' );
+			wp_register_style( 'rivva-reactions-css', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/css/style.css', 'do-jquery-ui-tabs-css-rivva' );
+			wp_enqueue_style( array('rivva-reactions-css', 'do-jquery-ui-tabs-css') );
 		}
 		
 		
@@ -158,13 +157,13 @@ if ( !class_exists('RivvaReactions') ) {
 			<img id="wp_dashboard_rivva_logo" src="<?php echo WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/images/rivva-logo.png' ?>" alt="" />
 			<div id="rivvareactionstabs" class="inside">
 				<ul>
-					<li><a href="#reactions"><?php _e( 'Reactions', FB_RR_TEXTDOMAIN ); ?></a></li>
-					<li><a href="#news"><?php _e( 'Top Stories', FB_RR_TEXTDOMAIN ); ?></a></li>
-					<li><a href="#wpnews"><?php _e( 'WP Stories', FB_RR_TEXTDOMAIN ); ?></a></li>
+					<li><a href="#rivvareactions"><?php _e( 'Reactions', FB_RR_TEXTDOMAIN ); ?></a></li>
+					<li><a href="#rivvanews"><?php _e( 'Top Stories', FB_RR_TEXTDOMAIN ); ?></a></li>
+					<li><a href="#rivvawpnews"><?php _e( 'WP Stories', FB_RR_TEXTDOMAIN ); ?></a></li>
 				</ul>
 			</div>
 			
-			<div id="reactions">
+			<div id="rivvareactions">
 			<?php
 			// http://rivva.de/http://bueltge.de/atom.xml
 			// http://feeds.feedburner.com/rivva
@@ -184,7 +183,7 @@ if ( !class_exists('RivvaReactions') ) {
 				$rss->items = array_slice($rss->items, 0, $widget_options['items']);
 				
 				foreach ($rss->items as $item ) {
-					$irlink = '<h4><a class="rsswidget" href="' . wp_filter_kses($item['link']) . '">' . wptexturize(wp_specialchars($item['title'])) . '</a>';
+					$irlink = '<h4><a class="rsswidget" href="' . wp_filter_kses($item['link']) . '">' . wptexturize(esc_html($item['title'])) . '</a>';
 					
 					if ($widget_options['showtime']) {
 						$time = strtotime($item['published']);
@@ -213,7 +212,7 @@ if ( !class_exists('RivvaReactions') ) {
 			?>
 			</div>
 			
-			<div id="news" class="ui-tabs-hide">
+			<div id="rivvanews" class="ui-tabs-hide">
 			<?php
 			$rss = @fetch_rss($rivva_news_feed);
 			
@@ -223,7 +222,7 @@ if ( !class_exists('RivvaReactions') ) {
 				$rss->items = array_slice($rss->items, 0, $widget_options['items']);
 				
 				foreach ($rss->items as $item ) {
-					$irlink = '<h4><a class="rsswidget" href="' . wp_filter_kses($item['link']) . '">' . wptexturize( wp_specialchars($item['title']) ) . '</a>';
+					$irlink = '<h4><a class="rsswidget" href="' . wp_filter_kses($item['link']) . '">' . wptexturize( esc_html($item['title']) ) . '</a>';
 					
 					if ($widget_options['showtime']) {
 						$time = strtotime($item['pubdate']);
@@ -253,7 +252,7 @@ if ( !class_exists('RivvaReactions') ) {
 			?>
 			</div>
 			
-			<div id="wpnews" class="ui-tabs-hide">
+			<div id="rivvawpnews" class="ui-tabs-hide">
 			<?php
 			$rss = @fetch_rss($rivva_wpnews_feed);
 			
@@ -263,7 +262,7 @@ if ( !class_exists('RivvaReactions') ) {
 				$rss->items = array_slice($rss->items, 0, $widget_options['items']);
 				
 				foreach ($rss->items as $item ) {
-					$irlink = '<h4><a class="rsswidget" href="' . wp_filter_kses($item['link']) . '">' . wptexturize(wp_specialchars($item['title'])) . '</a>';
+					$irlink = '<h4><a class="rsswidget" href="' . wp_filter_kses($item['link']) . '">' . wptexturize(esc_html($item['title'])) . '</a>';
 					
 					if ($widget_options['showtime']) {
 						$time = strtotime($item['pubdate']);
