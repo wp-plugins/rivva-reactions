@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rivva Reactions v0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2009-10-16 11:19+0200\n"
+"Last-Translator: admin <bueltge@zeiss.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: rivva-reactions.php:47
+msgid "Error in file:  on line: .<br />The Wordpress file \"rss-functions.php\" or \"rss.php\" could not be included."
+msgstr ""
+
+#: rivva-reactions.php:193
+#: rivva-reactions.php:232
+#: rivva-reactions.php:272
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: rivva-reactions.php:212
+#: rivva-reactions.php:251
+#: rivva-reactions.php:291
+#@ rivvareactions
+msgid "View all"
+msgstr "Alle ansehen"
+
+#: rivva-reactions.php:252
+#: rivva-reactions.php:292
+#@ rivvareactions
+msgid "Newsriver"
+msgstr "Newsriver"
+
+#: rivva-reactions.php:303
+msgid "Rivva Reactions"
+msgstr ""
+
+#: rivva-reactions.php:336
+#@ rivvareactions
+msgid "How many Rivva reactions would you like to display?"
+msgstr "Wie viele Rivva Reaktionen möchtest du sehen?"
+
+#: rivva-reactions.php:349
+#@ rivvareactions
+msgid "Show reaction date?"
+msgstr "Das Datum der Reaktion zeigen?"
+
+#: rivva-reactions.php:356
+#@ rivvareactions
+msgid "Show excerpt?"
+msgstr "Auszug anzeigen?"
+
+#: rivva-reactions.php:363
+#@ rivvareactions
+msgid "Filter your own tweets?"
+msgstr "Die eigenen Tweets filtern?"
+
+#: rivva-reactions.php:370
+#@ rivvareactions
+msgid "Your Twitter username"
+msgstr "Dein Twitter Username"
+
+#: rivva-reactions.php:288
+#@ rivvareactions
+msgid "This dashboard widget queries <a href=\"http://rivva.de\">Rivva</a> for WordPress."
+msgstr "Das Dashboard Widget scannt <a href=\\\"http://rivva.de\\\">Rivva</a> nach WordPress."
+
+#: rivva-reactions.php:209
+#@ rivvareactions
+msgid "This dashboard widget queries <a href=\"http://rivva.de\">Rivva</a> so that when another blog or Twitter links to your site it will show up here. It has found no incoming links... yet. It's okay - there is no rush."
+msgstr "Dieses Dashboard Widget scannt <a href=\\\"http://rivva.de\\\">Rivva</a>, so dass wenn ein Blog oder Twitter deine Site verlinkt, die Quelle hier gezeigt wird. Es wurden keine Links gefunden... bisher. Das ist okay - keine Sorge."
+
+#: rivva-reactions.php:248
+#@ rivvareactions
+msgid "This dashboard widget queries <a href=\"http://rivva.de\">Rivva</a> News."
+msgstr "Dieses Dashboard Widget scannt die <a href=\\\"http://rivva.de\\\">Rivva</a> News."
+
+#: rivva-reactions.php:375
+#@ rivvareactions
+msgid "About Rivva"
+msgstr "Über Rivva"
+
+#: rivva-reactions.php:161
+#@ rivvareactions
+msgid "Reactions"
+msgstr "Reaktionen"
+
+#: rivva-reactions.php:162
+#@ rivvareactions
+msgid "Top Stories"
+msgstr "Top Stories"
+
+#: rivva-reactions.php:163
+#@ rivvareactions
+msgid "WP Stories"
+msgstr "WP Stories"
+
