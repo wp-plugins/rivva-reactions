@@ -4,11 +4,14 @@ Donate link: http://bueltge.de/wunschliste/
 Tags: dashbaord widget, rivva, incoming links, widgets, dashboard, rss, atom
 Requires at least: 2.7
 Tested up to: 3.0
-Stable tag: 0.1
+Stable tag: 0.5.0
 
+This plugin was not supportet or developed; Rivva is down.
 Displays Rivva reactions - also blogs, tweets, top stories and news about WordPress - for your blog on your WordPress 2.7+ dashboard.
 
 == Description ==
+
+= This plugin was not supportet or developed; Rivva is down. =
 
 WordPress 2.7 introduces a widgetized dashboard featuring the latest posts and WordPress news.
 
@@ -62,6 +65,10 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.5 (02/27/2011) =
+* deactivate plugin developed
+* update plugin for information the users on plugin site and also on backend on her installs
+
 = v0.4 (06/18/2010) =
 * small fixes for deprecated functions
 * change include style for use different plugins use this add style for tab ui
