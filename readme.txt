@@ -7,11 +7,13 @@ Tested up to: 3.0
 Stable tag: 0.5.0
 
 This plugin was not supportet or developed; Rivva is down.
-Displays Rivva reactions - also blogs, tweets, top stories and news about WordPress - for your blog on your WordPress 2.7+ dashboard.
 
 == Description ==
 
-= This plugin was not supportet or developed; Rivva is down. =
+= This plugin was not supportet or developed; [Rivva](http://rivva.de) is down. =
+
+
+Displays Rivva reactions - also blogs, tweets, top stories and news about WordPress - for your blog on your WordPress 2.7+ dashboard.
 
 WordPress 2.7 introduces a widgetized dashboard featuring the latest posts and WordPress news.
 
