@@ -3,10 +3,10 @@
 Plugin Name: Rivva Reactions
 Plugin URI:  http://bueltge.de/rivva-reaction-wordpress-plugin/1029/
 Description: Displays Rivva reactions on your WordPress 2.7+ dashboard.
-Version:     0.5.1
+Version:     0.5.2
 Author:      Frank B&uuml;ltge
 Author URI:  http://bueltge.de/
-Last Change: 18.06.2010 14:38:50
+Last Change: 17.06.2011
 /*
 
 /*
@@ -27,28 +27,17 @@ The license is also available at http://www.gnu.org/copyleft/gpl.html
 */
 
 //avoid direct calls to this file, because now WP core and framework has been used
-if ( !function_exists('add_action') ) {
+if ( ! function_exists('add_action') ) {
 	header('Status: 403 Forbidden');
 	header('HTTP/1.1 403 Forbidden');
 	exit();
-} else {
-
-	define( 'FB_RR_BASENAME', plugin_basename(__FILE__) );
-	define( 'FB_RR_BASEFOLDER', plugin_basename( dirname( __FILE__ ) ) );
-	define( 'FB_RR_TEXTDOMAIN', 'rivvareactions' );
-	
-	if ( file_exists(ABSPATH . WPINC . '/rss.php') ) {
-		@require_once (ABSPATH . WPINC . '/rss.php');
-		// It's Wordpress 2.x. since it has been loaded successfully
-	} elseif (file_exists(ABSPATH . WPINC . '/rss-functions.php')) {
-		@require_once (ABSPATH . WPINC . '/rss-functions.php');
-		// In Wordpress < 2.1
-	} else {
-		die (__('Error in file: ' . __FILE__ . ' on line: ' . __LINE__ . '.<br />The Wordpress file "rss-functions.php" or "rss.php" could not be included.'));
-	}
 }
 
+
 if ( !class_exists('RivvaReactions') ) {
+		
+	define( 'FB_RR_TEXTDOMAIN', 'rivvareactions' );
+	
 	class RivvaReactions {
 		
 		
@@ -56,8 +45,8 @@ if ( !class_exists('RivvaReactions') ) {
 		 * constructor
 		 */
 		function RivvaReactions() {
-			add_action( 'init', array(&$this, 'textdomain') );
-			add_action( 'init', array(&$this, 'on_init'), 1 );
+			add_action( 'init', array( $this, 'textdomain' ) );
+			add_action( 'init', array( $this, 'on_init' ), 1 );
 			
 			if ( function_exists('register_deactivation_hook') )
 				register_deactivation_hook( __FILE__, array(&$this, 'on_deactivate') );
@@ -72,10 +61,8 @@ if ( !class_exists('RivvaReactions') ) {
 			if ( !is_admin() )
 				return;
 			
-			global $pagenow;
-			
-			if ( 'index.php' == $pagenow )
-				add_action( 'admin_init', array(&$this, 'on_dashboard') );
+			if ( 'index.php' == $GLOBALS['pagenow'] )
+				add_action( 'admin_init', array( $this, 'on_dashboard' ) );
 		}
 		
 		
@@ -83,13 +70,10 @@ if ( !class_exists('RivvaReactions') ) {
 		 * load all methods for index.php/Dashboard
 		 */
 		function on_dashboard() {
-			add_action( 'wp_dashboard_setup', array(&$this, 'RivvaReactionsInit') );
+			add_action( 'wp_dashboard_setup', array( $this, 'RivvaReactionsInit' ) );
 				
-			wp_enqueue_script( 'rivva-reactions', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/js/rivva-reactions.js', array('jquery', 'jquery-ui-tabs') );
-			
-			wp_register_style( 'do-jquery-ui-tabs-css', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/css/ui-tabs.css' );
-			wp_register_style( 'rivva-reactions-css', WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/css/style.css', 'do-jquery-ui-tabs-css-rivva' );
-			wp_enqueue_style( array('rivva-reactions-css', 'do-jquery-ui-tabs-css') );
+			wp_register_style( 'rivva-reactions-css', WP_PLUGIN_URL . '/' . plugin_basename( dirname( __FILE__ ) ) . '/css/style.css', 'do-jquery-ui-tabs-css-rivva' );
+			wp_enqueue_style( array('rivva-reactions-css') );
 		}
 		
 		
@@ -153,67 +137,23 @@ if ( !class_exists('RivvaReactions') ) {
 		 * inside the Dashboard on WordPress 2.7+
 		 */
 		function wp_dashboard_rivva_reactions() {
-			?>
-			<img id="wp_dashboard_rivva_logo" src="<?php echo WP_PLUGIN_URL . '/' . FB_RR_BASEFOLDER . '/images/rivva-logo.png' ?>" alt="" />
-			<div id="rivvareactionstabs" class="inside">
-				<ul>
-					<li><a href="#rivvareactions"><?php _e( 'Reactions', FB_RR_TEXTDOMAIN ); ?></a></li>
-					<li><a href="#rivvanews"><?php _e( 'Top Stories', FB_RR_TEXTDOMAIN ); ?></a></li>
-					<li><a href="#rivvawpnews"><?php _e( 'WP Stories', FB_RR_TEXTDOMAIN ); ?></a></li>
-				</ul>
-			</div>
 			
-			<div id="rivvareactions">
-			<?php
-			// http://rivva.de/http://bueltge.de/atom.xml
-			// http://feeds.feedburner.com/rivva
-			// http://rivva.de/wordpress/rss.xml
-			$rivva_reactions_feed = 'http://rivva.de/' . trailingslashit( get_option( 'home' ) ) . 'atom.xml';
-			//$rivva_reactions_feed = 'http://rivva.de/http://bueltge.de/atom.xml';
-			$rivva_news_feed = 'http://feeds.feedburner.com/rivva';
-			$rivva_wpnews_feed = 'http://rivva.de/wordpress/rss.xml';
-			
-			$widget_options = $this->RivvaReactionsOptions();
-			
-			$rss = @$this->filtered_fetch_rss($rivva_reactions_feed);
-			
-			if ( !empty($rss->items) ) {
-				//var_dump($rss->items);
-				echo '<ul id="rivva-reactions-list">';
-				$rss->items = array_slice($rss->items, 0, $widget_options['items']);
-				
-				foreach ($rss->items as $item ) {
-					$irlink = '<h4><a class="rsswidget" href="' . wp_filter_kses($item['link']) . '">' . wptexturize(esc_html($item['title'])) . '</a>';
-					
-					if ($widget_options['showtime']) {
-						$time = strtotime($item['published']);
-					
-						if ( ( abs(time() - $time) ) < 86400 )
-							$h_time = sprintf( __('%s ago'), human_time_diff( $time ) );
-						else
-							$h_time = date_i18n( get_option( 'date_format' ), $time );
-						
-						$irlink .= sprintf( ' %s', '<abbr title="' . date( 'Y/m/d H:i:s', $time ) . '">' . $h_time . '</abbr></h4>' );
-					}
-					
-					if ($widget_options['showexcerpt'])
-						$irlink .=  esc_html( strip_tags($item['atom_content']) ) . '<br />';
-					
-					echo '<li>' . $irlink . '</li>';
-				}
-			
-			
-				echo '</ul>';
+			if ( file_exists(ABSPATH . WPINC . '/rss.php') ) {
+				@require_once (ABSPATH . WPINC . '/rss.php');
+				// It's Wordpress 2.x. since it has been loaded successfully
+			} elseif (file_exists(ABSPATH . WPINC . '/rss-functions.php')) {
+				@require_once (ABSPATH . WPINC . '/rss-functions.php');
+				// In Wordpress < 2.1
 			} else {
-				echo '<p>' . __( 'This dashboard widget queries <a href="http://rivva.de">Rivva</a> so that when another blog or Twitter links to your site it will show up here. It has found no incoming links... yet. It\'s okay - there is no rush.', FB_RR_TEXTDOMAIN ) . "</p>";
+				die (__('Error in file: ' . __FILE__ . ' on line: ' . __LINE__ . '.<br />The Wordpress file "rss-functions.php" or "rss.php" could not be included.'));
 			}
 			
-			echo '<p class="textright"><a class="button" href="http://rivva.de/' . trailingslashit( get_option( 'home' )).'"> ' . __('View all', FB_RR_TEXTDOMAIN) . '</a></p>';
+			$widget_options = $this->RivvaReactionsOptions();
 			?>
-			</div>
+			<img id="wp_dashboard_rivva_logo" src="<?php echo WP_PLUGIN_URL . '/' . plugin_basename( dirname( __FILE__ ) ) . '/images/rivva-logo.png' ?>" alt="" />
 			
-			<div id="rivvanews" class="ui-tabs-hide">
-			<?php
+			<div id="rivvareactions">
+			<?php $rivva_news_feed = 'http://feeds.feedburner.com/rivva';
 			$rss = @fetch_rss($rivva_news_feed);
 			
 			if ( !empty($rss->items) ) {
@@ -248,47 +188,6 @@ if ( !class_exists('RivvaReactions') ) {
 			}
 			
 			echo '<p class="textright"><a class="button" href="http://rivva.de/"> ' . __('View all', FB_RR_TEXTDOMAIN) . '</a>';
-			echo ' <a class="button" href="http://rivva.de/newsriver"> ' . __('Newsriver', FB_RR_TEXTDOMAIN) . '</a></p>';
-			?>
-			</div>
-			
-			<div id="rivvawpnews" class="ui-tabs-hide">
-			<?php
-			$rss = @fetch_rss($rivva_wpnews_feed);
-			
-			if ( !empty($rss->items) ) {
-				//var_dump($rss->items);
-				echo '<ul id="rivva-reactions-list">';
-				$rss->items = array_slice($rss->items, 0, $widget_options['items']);
-				
-				foreach ($rss->items as $item ) {
-					$irlink = '<h4><a class="rsswidget" href="' . wp_filter_kses($item['link']) . '">' . wptexturize(esc_html($item['title'])) . '</a>';
-					
-					if ($widget_options['showtime']) {
-						$time = strtotime($item['pubdate']);
-					
-						if ( ( abs(time() - $time) ) < 86400 )
-							$h_time = sprintf( __('%s ago'), human_time_diff( $time ) );
-						else
-							$h_time = date_i18n( get_option( 'date_format' ), $time );
-						
-						$irlink .= sprintf( '	 %s', '<abbr title="' . date( 'Y/m/d H:i:s', $time ) . '">' . $h_time . '</abbr></h4>' );
-					}
-					
-					if ($widget_options['showexcerpt'])
-						$irlink .= esc_html( strip_tags($item['description']) ) . '<br />';
-					
-					echo '<li>' . $irlink . '</li>';
-				}
-			
-			
-				echo '</ul>';
-			} else {
-				echo '<p>' . __( 'This dashboard widget queries <a href="http://rivva.de">Rivva</a> for WordPress.', FB_RR_TEXTDOMAIN ) . "</p>";
-			}
-			
-			echo '<p class="textright"><a class="button" href="http://rivva.de/wordpress"> ' . __('View all', FB_RR_TEXTDOMAIN) . '</a>';
-			echo ' <a class="button" href="http://www.rivva.de/wordpress/newsriver"> ' . __('Newsriver', FB_RR_TEXTDOMAIN) . '</a></p>';
 			?>
 			</div>
 			<?php
@@ -325,7 +224,7 @@ if ( !class_exists('RivvaReactions') ) {
 			$options = $this->RivvaReactionsOptions();
 		
 			if ( 'post' == strtolower($_SERVER['REQUEST_METHOD']) && isset( $_POST['widget_id'] ) && 'wp_dashboard_rivva_reactions' == $_POST['widget_id'] ) {
-				foreach ( array( 'items', 'showtime', 'showurl', 'showexcerpt', 'ownreactions', 'twittername' ) as $key )
+				foreach ( array( 'items', 'showtime', 'showurl', 'showexcerpt') as $key )
 					$options[$key] = esc_html( strip_tags( $_POST[$key] ) );
 				update_option( 'RivvaReactions', $options );
 			}
@@ -353,20 +252,6 @@ if ( !class_exists('RivvaReactions') ) {
 				<label for="showexcerpt">
 					<input id="showexcerpt" name="showexcerpt" type="checkbox" value="1"<?php if ( 1 == $options['showexcerpt'] ) echo ' checked="checked"'; ?> />
 					<?php _e('Show excerpt?', FB_RR_TEXTDOMAIN ); ?>
-				</label>
-			</p>
-			
-			<p>
-				<label for="ownreactions">
-					<input id="ownreactions" name="ownreactions" type="checkbox" value="1"<?php if ( 1 == $options['ownreactions'] ) echo ' checked="checked"'; ?> />
-					<?php _e('Filter your own tweets?', FB_RR_TEXTDOMAIN ); ?>
-				</label>
-			</p>
-			
-			<p>
-				<label for="twittername">
-					<input id="twittername" name="twittername" type="text" value="<?php echo $options['twittername']; ?>" />
-					<?php _e('Your Twitter username', FB_RR_TEXTDOMAIN ); ?>
 				</label>
 			</p>
 			
