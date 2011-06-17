@@ -1,0 +1,19 @@
+/* Begin Rivva Reactions CSS */
+#wp_dashboard_rivva_reactions h4 {
+font-weight: 400;
+}
+
+#wp_dashboard_rivva_reactions h4 abbr {
+font-family:"Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+font-size:11px;
+color:#999;
+margin-left:3px;
+}
+
+#wp_dashboard_rivva_logo {
+float:right;
+position:relative;
+z-index:50;
+border:none;
+}
+/* End Rivva Reactions CSS */
