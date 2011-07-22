@@ -56,7 +56,7 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 == Changelog ==
 = v0.5.2 (06/17/2011) =
-* smaller version of this plugin; Rivve spend only one feed
+* smaller version of this plugin; Rivva spend only one feed
 
 = v0.5.1 (06/07/2011) =
 * Rivva is no more down :)
