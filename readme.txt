@@ -3,7 +3,7 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: dashbaord widget, rivva, incoming links, widgets, dashboard, rss, atom
 Requires at least: 2.7
-Tested up to: 3.2-RC1
+Tested up to: 3.3
 Stable tag: 0.5.2
 
 Displays Rivva reactions - also blogs, tweets, top stories and news about WordPress - for your blog on your WordPress 2.7+ dashboard.
@@ -46,6 +46,9 @@ Please see the [official site on Rivva](http://rivva.de/about "About Rivva").
 
 
 == Other Notes ==
+= Localizations =
+* Thanks to [Frank B&uuml;ltge](http://bueltge.de/ "Frank B&uuml;ltge") for german language file
+* Thanks to [Brian from InMotion Hosting](http://www.inmotionhosting.com/) for spanish translation
 
 = Licence =
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
