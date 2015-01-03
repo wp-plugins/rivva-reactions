@@ -3,7 +3,7 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: dashbaord widget, rivva, incoming links, widgets, dashboard, rss, atom
 Requires at least: 2.7
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: 0.5.2
 
 Displays Rivva reactions - also blogs, tweets, top stories and news about WordPress - for your blog on your WordPress 2.7+ dashboard.
